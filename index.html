@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMath - Engineering Formula Quiz App</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-indigo-50 dark:from-slate-900 dark:to-indigo-950 text-slate-800 dark:text-slate-100 min-h-screen font-sans transition-colors duration-300">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200/50 dark:border-slate-700/50 px-6 py-4 flex justify-between items-center shadow-sm">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+            <div class="bg-indigo-600 text-white p-2 rounded-xl shadow-md shadow-indigo-500/20">
+                <i class="fas fa-graduation-cap text-xl"></i>
+            </div>
+            <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">EduMath</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8 font-medium">
+            <button onclick="navigateTo('home')" class="nav-link text-indigo-600 dark:text-indigo-400" id="nav-home">Home</button>
+            <button onclick="navigateTo('library')" class="nav-link text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" id="nav-library">Formula Library</button>
+            <button onclick="navigateTo('leaderboard')" class="nav-link text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" id="nav-leaderboard">Leaderboard</button>
+        </div>
+        <div class="flex items-center space-x-4">
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-all duration-200">
+                <i class="fas fa-moon dark:hidden text-lg"></i>
+                <i class="fas fa-sun hidden dark:block text-lg"></i>
+            </button>
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-lg"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-x-0 top-[73px] p-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 z-30 shadow-xl animate-fade-in">
+        <div class="flex flex-col space-y-3 font-medium">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="text-left py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-indigo-600">Home</button>
+            <button onclick="navigateTo('library'); toggleMobileMenu()" class="text-left py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300">Formula Library</button>
+            <button onclick="navigateTo('leaderboard'); toggleMobileMenu()" class="text-left py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300">Leaderboard</button>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8 md:py-12">
+
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page-view space-y-12">
+            <div class="text-center space-y-4 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">Master your <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Engineering Formulas</span></h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400">Test your expertise in Algebra, Calculus, Trigonometry, and Matrices with dynamic, real-time tracking challenges.</p>
+            </div>
+
+            <!-- Configuration Card -->
+            <div class="glass-card max-w-2xl mx-auto p-6 md:p-8 rounded-2xl border border-white/20 shadow-xl backdrop-blur-lg bg-white/40 dark:bg-slate-900/40">
+                <h2 class="text-2xl font-bold mb-6 flex items-center space-x-2">
+                    <i class="fas fa-sliders-h text-indigo-500"></i>
+                    <span>Configure Quiz</span>
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Difficulty Selection -->
+                    <div>
+                        <label class="block text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Select Difficulty</label>
+                        <div class="grid grid-cols-3 gap-4">
+                            <button onclick="selectDifficulty('easy')" id="diff-easy" class="diff-btn py-3 px-4 rounded-xl border-2 border-emerald-500/20 bg-emerald-500/5 text-emerald-600 dark:text-emerald-400 font-bold transition-all shadow-sm">
+                                Easy
+                            </button>
+                            <button onclick="selectDifficulty('medium')" id="diff-medium" class="diff-btn py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold transition-all shadow-sm">
+                                Medium
+                            </button>
+                            <button onclick="selectDifficulty('hard')" id="diff-hard" class="diff-btn py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold transition-all shadow-sm">
+                                Hard
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Category Selection -->
+                    <div>
+                        <label class="block text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Choose Modules</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <button onclick="toggleCategory('algebra')" id="cat-algebra" class="cat-btn p-4 rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold flex flex-col items-center justify-center space-y-2 transition-all">
+                                <i class="fas fa-square-root-alt text-2xl"></i>
+                                <span class="text-sm">Algebra</span>
+                            </button>
+                            <button onclick="toggleCategory('calculus')" id="cat-calculus" class="cat-btn p-4 rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold flex flex-col items-center justify-center space-y-2 transition-all">
+                                <i class="fas fa-wave-square text-2xl"></i>
+                                <span class="text-sm">Calculus</span>
+                            </button>
+                            <button onclick="toggleCategory('trigonometry')" id="cat-trigonometry" class="cat-btn p-4 rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold flex flex-col items-center justify-center space-y-2 transition-all">
+                                <i class="fas fa-chart-line text-2xl"></i>
+                                <span class="text-sm">Trig</span>
+                            </button>
+                            <button onclick="toggleCategory('matrices')" id="cat-matrices" class="cat-btn p-4 rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold flex flex-col items-center justify-center space-y-2 transition-all">
+                                <i class="fas fa-th text-2xl"></i>
+                                <span class="text-sm">Matrices</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- User Name Field -->
+                    <div>
+                        <label class="block text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Your Name</label>
+                        <input type="text" id="username-input" placeholder="Enter name for leaderboard..." class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                    </div>
+
+                    <!-- Start Button -->
+                    <button onclick="startQuiz()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-500/20 transform active:scale-95 transition-all text-lg flex items-center justify-center space-x-2">
+                        <span>Launch Quiz Challenge</span>
+                        <i class="fas fa-rocket"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMULA LIBRARY PAGE -->
+        <section id="page-library" class="page-view hidden space-y-8 animate-fade-in">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl font-bold tracking-tight">Formula Reference Library</h1>
+                    <p class="text-slate-600 dark:text-slate-400">Quick-lookup cheat sheet for core engineering mathematical identities.</p>
+                </div>
+                <!-- Search Bar -->
+                <div class="relative w-full md:w-80">
+                    <i class="fas fa-search absolute left-4 top-3.5 text-slate-400"></i>
+                    <input type="text" id="library-search" oninput="searchLibrary()" placeholder="Search formulas..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                </div>
+            </div>
+
+            <!-- Categories Tabs -->
+            <div class="flex space-x-2 border-b border-slate-200 dark:border-slate-800 pb-px overflow-x-auto">
+                <button onclick="switchLibraryTab('all')" id="tab-all" class="lib-tab px-4 py-2.5 font-semibold text-sm border-b-2 border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400 whitespace-nowrap">All Topics</button>
+                <button onclick="switchLibraryTab('algebra')" id="tab-algebra" class="lib-tab px-4 py-2.5 font-semibold text-sm border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-indigo-500 whitespace-nowrap">Algebra</button>
+                <button onclick="switchLibraryTab('calculus')" id="tab-calculus" class="lib-tab px-4 py-2.5 font-semibold text-sm border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-indigo-500 whitespace-nowrap">Calculus</button>
+                <button onclick="switchLibraryTab('trigonometry')" id="tab-trigonometry" class="lib-tab px-4 py-2.5 font-semibold text-sm border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-indigo-500 whitespace-nowrap">Trigonometry</button>
+                <button onclick="switchLibraryTab('matrices')" id="tab-matrices" class="lib-tab px-4 py-2.5 font-semibold text-sm border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-indigo-500 whitespace-nowrap">Matrices</button>
+            </div>
+
+            <!-- Formulas Container Grid -->
+            <div id="library-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically injected formula cards -->
+            </div>
+        </section>
+
+        <!-- QUIZ PAGE -->
+        <section id="page-quiz" class="page-view hidden space-y-6 max-w-3xl mx-auto animate-fade-in">
+            <!-- HUD bar -->
+            <div class="flex items-center justify-between bg-white/60 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800/50 backdrop-blur-md shadow-sm">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs uppercase font-bold text-slate-400">Progress:</span>
+                    <span id="quiz-progress-text" class="font-bold text-indigo-600 dark:text-indigo-400">1/10</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-1.5 text-amber-500">
+                        <i class="fas fa-star"></i>
+                        <span id="quiz-score" class="font-bold">0</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <i class="far fa-clock text-indigo-500 animate-pulse"></i>
+                        <span id="quiz-timer" class="font-mono font-bold text-lg">00:20</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modern Micro Progress Bar Tracker -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden shadow-inner">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full transition-all duration-300" style="width: 10%"></div>
+            </div>
+
+            <!-- Question Card Context Window -->
+            <div class="glass-card p-6 md:p-8 rounded-2xl border border-white/20 shadow-xl bg-white dark:bg-slate-900">
+                <div class="mb-2">
+                    <span id="question-topic-badge" class="px-2.5 py-1 rounded-md text-xs font-bold uppercase bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">Calculus</span>
+                </div>
+                <h3 id="question-text" class="text-xl md:text-2xl font-bold mb-8 leading-snug">What is the derivative of f(x) = sin(x)?</h3>
+
+                <!-- MCQ Options Wrapper -->
+                <div id="mcq-options-container" class="grid grid-cols-1 gap-4 hidden">
+                    <!-- Injected option nodes -->
+                </div>
+
+                <!-- Fill In The Blank Input Wrapper -->
+                <div id="fib-container" class="space-y-4 hidden">
+                    <input type="text" id="fib-input" placeholder="Type your answer here..." class="w-full px-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 font-mono text-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                    <button onclick="submitFibAnswer()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition-all">Submit Answer</button>
+                </div>
+            </div>
+
+            <!-- Operational Controllers Bar -->
+            <div class="flex justify-end">
+                <button id="next-question-btn" onclick="nextQuestion()" class="hidden bg-slate-800 dark:bg-slate-100 text-white dark:text-slate-900 font-bold py-3 px-6 rounded-xl hover:bg-slate-700 dark:hover:bg-slate-200 transition-all items-center space-x-2">
+                    <span>Next Prompt</span>
+                    <i class="fas fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- RESULT PERFORMANCE PAGE -->
+        <section id="page-result" class="page-view hidden space-y-8 max-w-3xl mx-auto animate-fade-in">
+            <div class="text-center space-y-2">
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Performance Analytics Evaluation</h1>
+                <p class="text-slate-600 dark:text-slate-400">Review your automated performance metrics data breakdown below.</p>
+            </div>
+
+            <!-- Metrics Overview Cards Stack -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-center shadow-sm">
+                    <span class="block text-xs font-bold uppercase text-slate-400 mb-1">Final Score</span>
+                    <span id="res-score" class="text-2xl md:text-3xl font-black text-indigo-600 dark:text-indigo-400">0</span>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-center shadow-sm">
+                    <span class="block text-xs font-bold uppercase text-slate-400 mb-1">Accuracy Rate</span>
+                    <span id="res-percentage" class="text-2xl md:text-3xl font-black text-purple-600 dark:text-purple-400">0%</span>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-center shadow-sm">
+                    <span class="block text-xs font-bold uppercase text-slate-400 mb-1">Correct Targets</span>
+                    <span id="res-correct" class="text-2xl md:text-3xl font-black text-emerald-600 dark:text-emerald-400">0</span>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-center shadow-sm">
+                    <span class="block text-xs font-bold uppercase text-slate-400 mb-1">Missed Targets</span>
+                    <span id="res-incorrect" class="text-2xl md:text-3xl font-black text-rose-600 dark:text-rose-400">0</span>
+                </div>
+            </div>
+
+            <!-- Descriptive Insight Block -->
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row items-center gap-6">
+                <div id="res-insight-icon" class="p-4 rounded-full text-4xl">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="space-y-1 text-center md:text-left">
+                    <h3 id="res-insight-title" class="text-xl font-bold">Excellent Achievement!</h3>
+                    <p id="res-insight-desc" class="text-slate-600 dark:text-slate-400">You show highly specialized technical command of underlying engineering operational structures.</p>
+                </div>
+            </div>
+
+            <!-- Action Block links -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="navigateTo('home')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-8 rounded-xl transition-all shadow-lg shadow-indigo-500/20 flex items-center justify-center space-x-2">
+                    <i class="fas fa-redo"></i>
+                    <span>Restart Challenge Module</span>
+                </button>
+                <button onclick="navigateTo('library')" class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold py-3.5 px-8 rounded-xl transition-all flex items-center justify-center space-x-2">
+                    <i class="fas fa-book"></i>
+                    <span>Review Library Reference</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- GLOBAL LOCALSTORAGE LEADERBOARD -->
+        <section id="page-leaderboard" class="page-view hidden space-y-6 max-w-2xl mx-auto animate-fade-in">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight">Global High Scores Matrix</h1>
+                <p class="text-slate-600 dark:text-slate-400">Top 10 real-time records cached inside local application parameters.</p>
+            </div>
+
+            <!-- Leaderboard Board Matrix Frame -->
+            <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xl">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 text-xs font-bold uppercase tracking-wider text-slate-400">
+                            <th class="py-4 px-6 text-center w-20">Rank</th>
+                            <th class="py-4 px-6">Candidate Node</th>
+                            <th class="py-4 px-6">Difficulty</th>
+                            <th class="py-4 px-6 text-right">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-tbody">
+                        <!-- Populated dynamic matrix elements -->
+                    </tbody>
+                </table>
+                <div id="leaderboard-empty-state" class="hidden p-8 text-center text-slate-400">
+                    <i class="fas fa-database mb-2 text-2xl block"></i>
+                    <span>No localized score matrices stored yet.</span>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <button onclick="clearLeaderboard()" class="text-xs font-semibold text-rose-500 dark:text-rose-400 hover:underline flex items-center space-x-1">
+                    <i class="fas fa-trash-alt"></i>
+                    <span>Purge Leaderboard Cache</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CERTIFICATE MODAL WINDOW FRAME POPUP -->
+    <div id="certificate-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white text-slate-900 p-6 md:p-10 rounded-2xl max-w-2xl w-full border-8 border-double border-amber-600 relative shadow-2xl animate-scale-up">
+            <!-- Close Modal Trigger Button -->
+            <button onclick="closeCertificate()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Structural Certificate Layout Printable Content Area -->
+            <div class="border-2 border-amber-600/30 p-6 text-center space-y-6 bg-amber-50/20">
+                <div class="flex justify-center">
+                    <i class="fas fa-award text-amber-500 text-6xl"></i>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="font-serif text-3xl md:text-4xl tracking-wide text-amber-900 font-bold">Certificate of Competency</h2>
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">Engineering Mathematics Operational Mastery</p>
+                </div>
+                <p class="text-sm italic text-slate-600">This validation matrix hereby certifies that</p>
+                <h3 id="cert-user-name" class="text-2xl font-bold border-b border-slate-300 pb-2 max-w-xs mx-auto text-slate-800">John Doe</h3>
+                <p class="text-sm max-w-md mx-auto text-slate-600">has successfully verified operations with an evaluation metrics index of <span id="cert-percentage" class="font-bold text-indigo-600">90%</span> under specified configuration constraints.</p>
+                <div class="pt-6 flex justify-between items-center text-xs font-mono text-slate-400">
+                    <div>SYSTEM: EDUMATH-V1</div>
+                    <div id="cert-date-stamp">2026-09-02</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Application Logic Links -->
+    <script src="script.js"></script>
+</body>
+</html>
