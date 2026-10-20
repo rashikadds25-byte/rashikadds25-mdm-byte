@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Store | Product Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <a href="#" class="text-2xl font-extrabold tracking-tight text-indigo-700">NOVA<span class="text-slate-800"> STORE</span></a>
+      <div class="flex flex-wrap gap-5 text-sm font-semibold">
+        <a href="#products" class="hover:text-indigo-600">Products</a>
+        <a href="#about" class="hover:text-indigo-600">About</a>
+        <a href="#contact" class="hover:text-indigo-600">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="bg-gradient-to-r from-indigo-700 to-violet-700 text-white">
+    <div class="max-w-7xl mx-auto px-5 py-14 md:py-20 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <div class="max-w-2xl">
+        <p class="uppercase tracking-[0.2em] text-indigo-200 text-xs sm:text-sm font-bold mb-4">The new collection is here</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">Everyday essentials.<br><span class="text-amber-300">Extraordinary style.</span></h1>
+        <p class="mt-5 text-indigo-100 text-lg leading-relaxed">Discover thoughtfully selected products that bring comfort, quality, and style to your everyday life.</p>
+        <a href="#products" class="inline-block mt-7 bg-white text-indigo-700 px-6 py-3 rounded-lg font-bold hover:bg-indigo-50 transition">Shop Collection ↓</a>
+      </div>
+      <div class="self-center text-8xl sm:text-9xl md:text-[10rem] bg-white/10 rounded-3xl p-8" aria-label="Shopping bags illustration" role="img">🛍️</div>
+    </div>
+  </header>
+
+  <!-- Product Showcase -->
+  <main id="products" class="max-w-7xl mx-auto px-5 py-14">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+      <div>
+        <p class="text-indigo-600 font-bold uppercase tracking-widest text-xs">Curated for you</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">Featured Products</h2>
+      </div>
+      <p class="text-slate-500">Quality picks for every day.</p>
+    </div>
+
+    <!-- Flexbox responsive layout: 1 column on mobile, 2 on small screens, 4 on desktop -->
+    <div class="flex flex-wrap -mx-3">
+      <article class="w-full sm:w-1/2 lg:w-1/4 px-3 mb-6">
+        <div class="h-full bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition flex flex-col">
+          <div class="h-56 bg-rose-100 flex items-center justify-center text-8xl" role="img" aria-label="Headphones">🎧</div>
+          <div class="p-5 flex flex-col flex-1">
+            <p class="text-xs uppercase tracking-widest text-indigo-600 font-bold">Audio</p>
+            <h3 class="text-lg font-bold mt-2">Studio Headphones</h3>
+            <p class="text-slate-500 text-sm mt-2 flex-1">Clear sound and comfortable listening for every day.</p>
+            <div class="flex items-center justify-between mt-5 gap-3">
+              <span class="text-xl font-extrabold">₹1,499</span>
+              <button class="add-cart bg-indigo-600 text-white px-3 py-2 rounded-lg text-sm font-bold hover:bg-indigo-700" data-product="Studio Headphones">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="w-full sm:w-1/2 lg:w-1/4 px-3 mb-6">
+        <div class="h-full bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition flex flex-col">
+          <div class="h-56 bg-sky-100 flex items-center justify-center text-8xl" role="img" aria-label="Smart watch">⌚</div>
+          <div class="p-5 flex flex-col flex-1">
+            <p class="text-xs uppercase tracking-widest text-indigo-600 font-bold">Wearables</p>
+            <h3 class="text-lg font-bold mt-2">Active Smartwatch</h3>
+            <p class="text-slate-500 text-sm mt-2 flex-1">Keep track of your day with a clean, modern design.</p>
+            <div class="flex items-center justify-between mt-5 gap-3">
+              <span class="text-xl font-extrabold">₹2,299</span>
+              <button class="add-cart bg-indigo-600 text-white px-3 py-2 rounded-lg text-sm font-bold hover:bg-indigo-700" data-product="Active Smartwatch">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="w-full sm:w-1/2 lg:w-1/4 px-3 mb-6">
+        <div class="h-full bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition flex flex-col">
+          <div class="h-56 bg-amber-100 flex items-center justify-center text-8xl" role="img" aria-label="Backpack">🎒</div>
+          <div class="p-5 flex flex-col flex-1">
+            <p class="text-xs uppercase tracking-widest text-indigo-600 font-bold">Accessories</p>
+            <h3 class="text-lg font-bold mt-2">Everyday Backpack</h3>
+            <p class="text-slate-500 text-sm mt-2 flex-1">A versatile bag for college, travel, and daily essentials.</p>
+            <div class="flex items-center justify-between mt-5 gap-3">
+              <span class="text-xl font-extrabold">₹999</span>
+              <button class="add-cart bg-indigo-600 text-white px-3 py-2 rounded-lg text-sm font-bold hover:bg-indigo-700" data-product="Everyday Backpack">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="w-full sm:w-1/2 lg:w-1/4 px-3 mb-6">
+        <div class="h-full bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition flex flex-col">
+          <div class="h-56 bg-emerald-100 flex items-center justify-center text-8xl" role="img" aria-label="Water bottle">🥤</div>
+          <div class="p-5 flex flex-col flex-1">
+            <p class="text-xs uppercase tracking-widest text-indigo-600 font-bold">Lifestyle</p>
+            <h3 class="text-lg font-bold mt-2">Thermal Bottle</h3>
+            <p class="text-slate-500 text-sm mt-2 flex-1">A reusable bottle designed for busy days on the go.</p>
+            <div class="flex items-center justify-between mt-5 gap-3">
+              <span class="text-xl font-extrabold">₹599</span>
+              <button class="add-cart bg-indigo-600 text-white px-3 py-2 rounded-lg text-sm font-bold hover:bg-indigo-700" data-product="Thermal Bottle">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div id="cart-message" class="mt-2 text-center text-indigo-700 font-semibold" role="status" aria-live="polite"></div>
+  </main>
+
+  <section id="about" class="bg-indigo-50 border-y border-indigo-100">
+    <div class="max-w-7xl mx-auto px-5 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-extrabold">Simple choices. Great everyday value.</h2>
+        <p class="text-slate-600 mt-2">Explore the collection and find your next favourite.</p>
+      </div>
+      <a href="#products" class="self-start md:self-auto bg-indigo-600 text-white px-5 py-3 rounded-lg font-bold hover:bg-indigo-700">Browse Products</a>
+    </div>
+  </section>
+
+  <footer id="contact" class="bg-slate-900 text-slate-300">
+    <div class="max-w-7xl mx-auto px-5 py-7 flex flex-col sm:flex-row gap-3 sm:justify-between sm:items-center">
+      <p class="font-bold text-white">NOVA STORE</p>
+      <p class="text-sm">© 2026 Nova Store. Product showcase demo.</p>
+      <a href="mailto:hello@novastore.example" class="text-sm hover:text-white">Contact us</a>
+    </div>
+  </footer>
+
+  <script>
+    const cartButtons = document.querySelectorAll(".add-cart");
+    const cartMessage = document.getElementById("cart-message");
+    let cartCount = 0;
+
+    cartButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        cartCount++;
+        const product = button.dataset.product;
+        cartMessage.textContent = `${product} added to your demo cart. Items in cart: ${cartCount}`;
+        button.textContent = "Added ✓";
+        button.classList.remove("bg-indigo-600", "hover:bg-indigo-700");
+        button.classList.add("bg-emerald-600");
+      });
+    });
+  </script>
+</body>
+</html>
