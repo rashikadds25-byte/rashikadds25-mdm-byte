@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Study Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen p-4 sm:p-8">
+    <div class="max-w-3xl mx-auto bg-white p-5 sm:p-8 rounded-2xl shadow-lg">
+
+        <h1 class="text-3xl font-bold text-indigo-700 text-center">
+            Student Study Planner
+        </h1>
+        <p class="text-center text-gray-500 mt-2 mb-6">
+            Plan your day. Complete your goals.
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-indigo-50 p-4 rounded-xl text-center">
+                <p class="text-gray-600">Total Tasks</p>
+                <p id="total" class="text-3xl font-bold text-indigo-700">0</p>
+            </div>
+            <div class="bg-green-50 p-4 rounded-xl text-center">
+                <p class="text-gray-600">Completed</p>
+                <p id="completed" class="text-3xl font-bold text-green-700">0</p>
+            </div>
+        </div>
+
+        <form id="taskForm" class="flex flex-col sm:flex-row gap-3 mb-4">
+            <input id="taskInput" type="text" placeholder="Enter study task..."
+                class="flex-1 min-w-0 border rounded-lg p-3" required>
+
+            <select id="subject" class="border rounded-lg p-3">
+                <option>Maths</option>
+                <option>English</option>
+                <option>Science</option>
+                <option>Computer</option>
+                <option>Other</option>
+            </select>
+
+            <button type="submit" class="bg-indigo-600 text-white px-5 py-3 rounded-lg hover:bg-indigo-700">
+                Add Task
+            </button>
+        </form>
+
+        <p id="message" class="text-sm text-red-600 mb-3" role="status" aria-live="polite"></p>
+
+        <h2 class="text-xl font-bold mb-3">My Study Tasks</h2>
+        <ul id="taskList" class="space-y-3"></ul>
+
+        <p id="emptyMessage" class="text-gray-500 text-center py-5">
+            No tasks added yet.
+        </p>
+    </div>
+
+    <script>
+        const form = document.getElementById("taskForm");
+        const taskInput = document.getElementById("taskInput");
+        const subject = document.getElementById("subject");
+        const taskList = document.getElementById("taskList");
+        const total = document.getElementById("total");
+        const completed = document.getElementById("completed");
+        const message = document.getElementById("message");
+        const emptyMessage = document.getElementById("emptyMessage");
+
+        let tasks = [];
+
+        function updateProgress() {
+            total.textContent = tasks.length;
+            completed.textContent =
+                tasks.filter(task => task.done).length;
+
+            emptyMessage.style.display =
+                tasks.length === 0 ? "block" : "none";
+        }
+
+        function displayTasks() {
+            taskList.replaceChildren();
+
+            tasks.forEach(function (task) {
+                const li = document.createElement("li");
+                li.className =
+                    "flex items-center gap-3 border p-3 rounded-lg bg-slate-50";
+
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = task.done;
+                checkbox.className = "w-5 h-5 accent-indigo-600";
+
+                const details = document.createElement("div");
+                details.className = "flex-1 min-w-0";
+
+                const name = document.createElement("p");
+                name.textContent = task.name;
+                name.className = "font-semibold break-words";
+
+                if (task.done) {
+                    name.classList.add("line-through", "text-gray-400");
+                }
+
+                const category = document.createElement("p");
+                category.textContent = task.subject;
+                category.className = "text-sm text-gray-500";
+
+                checkbox.addEventListener("change", function () {
+                    task.done = checkbox.checked;
+                    displayTasks();
+                });
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.className =
+                    "bg-red-500 text-white px-3 py-2 rounded-lg text-sm";
+
+                deleteButton.addEventListener("click", function () {
+                    tasks = tasks.filter(item => item.id !== task.id);
+                    displayTasks();
+                });
+
+                details.append(name, category);
+                li.append(checkbox, details, deleteButton);
+                taskList.appendChild(li);
+            });
+
+            updateProgress();
+        }
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const name = taskInput.value.trim();
+
+            if (name === "") {
+                message.textContent = "Please enter a task.";
+                return;
+            }
+
+            tasks.push({
+                id: Date.now() + Math.random(),
+                name: name,
+                subject: subject.value,
+                done: false
+            });
+
+            message.textContent = "";
+            taskInput.value = "";
+            displayTasks();
+        });
+
+        displayTasks();
+    </script>
+</body>
+
+</html>
