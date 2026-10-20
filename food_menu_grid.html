@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spice Garden | Food Menu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-orange-50 text-slate-800">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <a href="#home" class="text-2xl font-extrabold text-orange-700">SPICE GARDEN</a>
+      <div class="flex flex-wrap gap-5 text-sm font-semibold">
+        <a href="#menu" class="hover:text-orange-700">Our Menu</a>
+        <a href="#about" class="hover:text-orange-700">About Us</a>
+        <a href="#contact" class="hover:text-orange-700">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="bg-gradient-to-r from-orange-700 to-amber-600 text-white">
+    <div class="max-w-7xl mx-auto px-5 py-14 md:py-20 text-center">
+      <p class="uppercase tracking-[0.2em] text-orange-100 text-sm font-bold mb-4">Fresh • Flavourful • Made with Love</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">Good Food, Great Mood!</h1>
+      <p class="max-w-2xl mx-auto mt-5 text-orange-50 text-lg leading-relaxed">Explore our popular dishes, prepared fresh with delicious ingredients and served with a little extra happiness.</p>
+      <a href="#menu" class="inline-block mt-7 bg-white text-orange-700 px-7 py-3 rounded-lg font-bold hover:bg-orange-100 transition">Explore Menu ↓</a>
+    </div>
+  </header>
+
+  <!-- Food Menu: responsive Tailwind CSS Grid -->
+  <main id="menu" class="max-w-7xl mx-auto px-5 py-14">
+    <div class="text-center mb-10">
+      <p class="text-orange-700 font-bold uppercase tracking-widest text-xs">Customer favourites</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">Our Popular Dishes</h2>
+      <p class="text-slate-600 mt-3">Freshly prepared favourites for every craving.</p>
+    </div>
+
+    <!-- 1 column on mobile, 2 on tablets, 3 on desktop -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+      <article class="bg-white rounded-2xl overflow-hidden border border-orange-100 shadow-sm hover:shadow-xl transition flex flex-col">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80" alt="Freshly baked pizza topped with vegetables" class="w-full h-56 object-cover" loading="lazy">
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex justify-between items-start gap-3"><h3 class="text-xl font-bold">Garden Supreme Pizza</h3><span class="text-orange-700 font-extrabold whitespace-nowrap">₹299</span></div>
+          <p class="text-slate-600 leading-relaxed mt-3 flex-1">Crispy crust topped with melted cheese, fresh vegetables, and our signature sauce.</p>
+          <button class="order-btn mt-5 bg-orange-600 text-white px-5 py-3 rounded-lg font-bold hover:bg-orange-700 transition" data-dish="Garden Supreme Pizza">Order Now</button>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden border border-orange-100 shadow-sm hover:shadow-xl transition flex flex-col">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80" alt="Juicy burger with lettuce and tomato" class="w-full h-56 object-cover" loading="lazy">
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex justify-between items-start gap-3"><h3 class="text-xl font-bold">Classic Cheese Burger</h3><span class="text-orange-700 font-extrabold whitespace-nowrap">₹199</span></div>
+          <p class="text-slate-600 leading-relaxed mt-3 flex-1">A juicy patty, creamy cheese, crisp lettuce, and our special house dressing.</p>
+          <button class="order-btn mt-5 bg-orange-600 text-white px-5 py-3 rounded-lg font-bold hover:bg-orange-700 transition" data-dish="Classic Cheese Burger">Order Now</button>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden border border-orange-100 shadow-sm hover:shadow-xl transition flex flex-col">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=900&q=80" alt="Indian biryani rice served with herbs" class="w-full h-56 object-cover" loading="lazy">
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex justify-between items-start gap-3"><h3 class="text-xl font-bold">Special Veg Biryani</h3><span class="text-orange-700 font-extrabold whitespace-nowrap">₹229</span></div>
+          <p class="text-slate-600 leading-relaxed mt-3 flex-1">Fragrant basmati rice cooked with aromatic spices, vegetables, and fresh herbs.</p>
+          <button class="order-btn mt-5 bg-orange-600 text-white px-5 py-3 rounded-lg font-bold hover:bg-orange-700 transition" data-dish="Special Veg Biryani">Order Now</button>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden border border-orange-100 shadow-sm hover:shadow-xl transition flex flex-col">
+        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=80" alt="Bowl of noodles with vegetables" class="w-full h-56 object-cover" loading="lazy">
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex justify-between items-start gap-3"><h3 class="text-xl font-bold">Hakka Noodles</h3><span class="text-orange-700 font-extrabold whitespace-nowrap">₹179</span></div>
+          <p class="text-slate-600 leading-relaxed mt-3 flex-1">Wok-tossed noodles with crunchy vegetables and a tasty blend of sauces.</p>
+          <button class="order-btn mt-5 bg-orange-600 text-white px-5 py-3 rounded-lg font-bold hover:bg-orange-700 transition" data-dish="Hakka Noodles">Order Now</button>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden border border-orange-100 shadow-sm hover:shadow-xl transition flex flex-col">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80" alt="Chocolate cake with rich frosting" class="w-full h-56 object-cover" loading="lazy">
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex justify-between items-start gap-3"><h3 class="text-xl font-bold">Chocolate Celebration Cake</h3><span class="text-orange-700 font-extrabold whitespace-nowrap">₹149</span></div>
+          <p class="text-slate-600 leading-relaxed mt-3 flex-1">A rich chocolate treat with smooth frosting for the perfect sweet finish.</p>
+          <button class="order-btn mt-5 bg-orange-600 text-white px-5 py-3 rounded-lg font-bold hover:bg-orange-700 transition" data-dish="Chocolate Celebration Cake">Order Now</button>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden border border-orange-100 shadow-sm hover:shadow-xl transition flex flex-col">
+        <img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=900&q=80" alt="Fresh fruit bowl" class="w-full h-56 object-cover" loading="lazy">
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex justify-between items-start gap-3"><h3 class="text-xl font-bold">Fresh Fruit Bowl</h3><span class="text-orange-700 font-extrabold whitespace-nowrap">₹129</span></div>
+          <p class="text-slate-600 leading-relaxed mt-3 flex-1">A refreshing mix of seasonal fruits, prepared fresh for a light and colourful bite.</p>
+          <button class="order-btn mt-5 bg-orange-600 text-white px-5 py-3 rounded-lg font-bold hover:bg-orange-700 transition" data-dish="Fresh Fruit Bowl">Order Now</button>
+        </div>
+      </article>
+    </div>
+    <p id="order-message" class="mt-7 text-center font-semibold text-orange-800" role="status" aria-live="polite"></p>
+  </main>
+
+  <section id="about" class="bg-orange-100 border-y border-orange-200">
+    <div class="max-w-7xl mx-auto px-5 py-10 text-center">
+      <h2 class="text-2xl sm:text-3xl font-extrabold">Made Fresh. Served with Care.</h2>
+      <p class="max-w-2xl mx-auto mt-3 text-slate-700 leading-relaxed">At Spice Garden, we believe every meal should be a memorable one. Visit us to enjoy good food and warm hospitality.</p>
+    </div>
+  </section>
+
+  <footer id="contact" class="bg-slate-900 text-slate-300 text-center px-5 py-7">
+    <p class="font-bold text-white text-lg">SPICE GARDEN</p>
+    <p class="mt-2 text-sm">© 2026 Spice Garden Restaurant · Food Menu Demo</p>
+    <p class="mt-1 text-sm">Contact: hello@spicegarden.example</p>
+  </footer>
+
+  <script>
+    const orderButtons = document.querySelectorAll('.order-btn');
+    const orderMessage = document.getElementById('order-message');
+    orderButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const dish = button.dataset.dish;
+        orderMessage.textContent = `${dish} selected! Please contact the restaurant to complete your order.`;
+      });
+    });
+  </script>
+</body>
+</html>
