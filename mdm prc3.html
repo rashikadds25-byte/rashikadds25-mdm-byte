@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFest 2026 Invitation</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md p-5">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-indigo-600">
+                TECHFEST 2026
+            </h2>
+            <span class="hidden sm:block text-slate-500 font-medium">
+                Innovate • Build • Inspire
+            </span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-indigo-700 to-purple-800 text-white text-center py-20 px-5">
+        <p class="uppercase tracking-widest text-indigo-200 mb-4">
+            Annual College Technical Festival
+        </p>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6">
+            Ideas into Impact
+        </h1>
+
+        <p class="max-w-2xl mx-auto text-lg text-indigo-100 leading-relaxed">
+            Join us for a day of technology, creativity, innovation
+            and exciting competitions. Explore new ideas and showcase
+            your talent at our annual technical festival.
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <a href="#rsvp"
+                class="bg-white text-indigo-700 px-7 py-3 rounded-lg font-bold hover:bg-indigo-100 transition">
+                Register Now
+            </a>
+
+            <a href="#events"
+                class="border border-white px-7 py-3 rounded-lg font-bold hover:bg-white hover:text-indigo-700 transition">
+                Explore Events
+            </a>
+        </div>
+    </header>
+
+    <!-- Event Details -->
+    <section class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5 px-5 -mt-6 relative">
+        <div class="bg-white p-6 rounded-xl shadow-md text-center border border-slate-200">
+            <p class="text-3xl mb-2">📅</p>
+            <h3 class="font-bold text-lg">Date</h3>
+            <p class="text-slate-500 mt-2">20 November 2026</p>
+            <p class="text-sm text-slate-500">9:00 AM onwards</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md text-center border border-slate-200">
+            <p class="text-3xl mb-2">📍</p>
+            <h3 class="font-bold text-lg">Venue</h3>
+            <p class="text-slate-500 mt-2">College Main Campus</p>
+            <p class="text-sm text-slate-500">Auditorium & Labs</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md text-center border border-slate-200">
+            <p class="text-3xl mb-2">🎟️</p>
+            <h3 class="font-bold text-lg">Entry</h3>
+            <p class="text-slate-500 mt-2">Open to Students</p>
+            <p class="text-sm text-slate-500">Bring your college ID</p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="max-w-6xl mx-auto py-16 px-5">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-3">
+                Explore Our Events
+            </h2>
+            <p class="text-slate-500">
+                Learn, compete and bring your ideas to life.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <div class="bg-white p-7 rounded-xl shadow hover:shadow-lg transition border border-slate-200">
+                <div class="text-4xl mb-4">🤖</div>
+                <h3 class="text-xl font-bold mb-3">Tech & AI Arena</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Discover artificial intelligence, robotics and
+                    emerging technologies.
+                </p>
+            </div>
+
+            <div class="bg-white p-7 rounded-xl shadow hover:shadow-lg transition border border-slate-200">
+                <div class="text-4xl mb-4">💡</div>
+                <h3 class="text-xl font-bold mb-3">Innovation Challenge</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Present creative ideas and develop solutions
+                    to real-world problems.
+                </p>
+            </div>
+
+            <div class="bg-white p-7 rounded-xl shadow hover:shadow-lg transition border border-slate-200">
+                <div class="text-4xl mb-4">🏆</div>
+                <h3 class="text-xl font-bold mb-3">Code & Compete</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Test your programming skills through coding
+                    challenges and quizzes.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="bg-indigo-700 text-white py-14 px-5">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">
+                Be Part of TechFest!
+            </h2>
+
+            <p class="text-indigo-100 mb-7">
+                Save the date and join us for an exciting experience.
+            </p>
+
+            <button id="rsvpButton"
+                class="bg-white text-indigo-700 px-8 py-3 rounded-lg font-bold hover:bg-indigo-100 transition">
+                Count Me In ✓
+            </button>
+
+            <p id="message" class="mt-5 font-medium" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 text-center p-5">
+        <p>© 2026 TechFest | Made for Curious Minds</p>
+    </footer>
+
+    <!-- JavaScript for RSVP -->
+    <script>
+        const button = document.getElementById("rsvpButton");
+        const message = document.getElementById("message");
+
+        button.addEventListener("click", function () {
+            button.textContent = "You're Interested ✓";
+            message.textContent =
+                "Thank you! Please contact your college coordinator to confirm registration.";
+        });
+    </script>
+
+</body>
+
+</html>
