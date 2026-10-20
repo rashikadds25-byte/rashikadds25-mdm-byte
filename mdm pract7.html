@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive FAQ Section</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e40af;
+        }
+
+        .faq {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .question {
+            width: 100%;
+            border: none;
+            background: #e0e7ff;
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .answer {
+            display: none;
+            padding: 12px;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .answer.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common student questions.</p>
+
+        <div class="faq">
+            <button class="question">1. How can I register for college?</button>
+            <div class="answer">
+                You can register through the college admission portal.
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="question">2. Where can I find the timetable?</button>
+            <div class="answer">
+                The timetable is available on the college website or notice board.
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="question">3. How can I contact a teacher?</button>
+            <div class="answer">
+                You can contact your teacher through the department office or official email.
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="question">4. Where can I check my results?</button>
+            <div class="answer">
+                You can check your results through the student portal.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll(".question");
+
+        questions.forEach(function (question) {
+            question.addEventListener("click", function () {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle("show");
+            });
+        });
+    </script>
+</body>
+
+</html>
